@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @db_company.company_name %>
+</p>
+
+<p>
+  <strong>Company info:</strong>
+  <%= @db_company.company_info %>
+</p>
+
+<p>
+  <strong>Company target:</strong>
+  <%= @db_company.company_target %>
+</p>
+
+<p>
+  <strong>Company media:</strong>
+  <%= @db_company.company_media %>
+</p>
+
+<p>
+  <strong>Company salary:</strong>
+  <%= @db_company.company_salary %>
+</p>
+
+<%= link_to 'Edit', edit_db_company_path(@db_company) %> |
+<%= link_to 'Back', db_companies_path %>

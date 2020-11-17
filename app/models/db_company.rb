@@ -1,0 +1,2 @@
+class DbCompany < ApplicationRecord
+end

@@ -1,0 +1,109 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style>
+    .switch {
+      position: absolute;
+      top:10px;
+      left: 200px;
+      display: inline-block;
+      width: 50px;
+      height: 27px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 21px;
+      width: 21px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(22px);
+      -ms-transform: translateX(22px);
+      transform: translateX(22px);
+    }
+    .company{
+      position:relative;
+      width: 1000px;
+      height: 900px;
+      border: 1px #333 solid;
+      margin: 10px auto;
+      overflow-y: scroll;
+    }
+    form{
+      text-align: center;
+    }
+    textarea{
+      width:900px;
+      height:300px;
+      overflow-x: auto;
+      overflow-y: scroll;
+      borader: 1px;
+      -webkit-border-radius: 5px;
+    }
+    p{
+      padding-left:10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="company" id="company">
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
+    <form action="/formprocess.php" method="post">
+      <p align="left">公作內容</p>
+      <textarea name="company_name" required>
+      </textarea>
+      <p align="left">條件要求</p>
+      <textarea name="company_spirit" required>
+      </textarea>
+      <p align="left">公司福利</p>
+      <textarea name="media" required>
+      </textarea>
+      <p align="left">薪資範圍</p>
+      <textarea name="salary" required>
+      </textarea>
+      <br>
+      <input type="submit" value="儲存">
+    </form>
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

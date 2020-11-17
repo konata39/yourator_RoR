@@ -1,0 +1,49 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style>
+    .company{
+      position:relative;
+      width: 1000px;
+      height: 900px;
+      border: 1px #333 solid;
+      margin: 10px auto;
+    }
+    .left-text{
+      position:absolute;
+      top: 5px;
+      left: 10px;
+    }
+    .GG{
+      height:50px;
+      margin: 10px;
+      border: 1px #000 solid;
+    }
+  </style>
+</head>
+<body>
+  <div class="company" id="company">
+    <p>職缺簡介</p>
+    <div style="overflow-y:scroll; width: 1000px; height: 850px;">
+      <div v-for="(item, index) in list">
+      <p>工作內容: {{ item.id }}</p>
+      <p>條件要求: {{ item.name }}</p>
+      <p>公司福利: {{ item.media }}</p>
+      <p>薪資範圍: {{ item.salary }}</p>
+    </div>
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+var company = new Vue({
+  el: '#company',
+  data: {
+    list: [
+    ],
+  },
+});
+company.list = [{ id: '123456789', name: '選項 1' , media: 'Hi', salary: '99999'}];
+
+</script>
+</body>
+</html>
