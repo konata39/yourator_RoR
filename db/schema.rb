@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_18_184333) do
+ActiveRecord::Schema.define(version: 2020_11_18_210204) do
 
   create_table "db_companies", force: :cascade do |t|
     t.string "company_name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_11_18_184333) do
   end
 
   create_table "db_jobs", force: :cascade do |t|
+    t.boolean "job_status"
     t.string "company_name"
     t.string "job_name"
     t.text "job_info"
@@ -31,7 +32,6 @@ ActiveRecord::Schema.define(version: 2020_11_18_184333) do
     t.text "salary_range"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "job_status"
   end
 
 end

@@ -1,17 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  job_status: false
   company_name: MyString
   job_name: MyString
   job_info: MyText
   job_require: MyText
-  company_benefit: MyText
+  job_benefit: MyText
   salary_range: MyText
 
 two:
+  job_status: false
   company_name: MyString
   job_name: MyString
   job_info: MyText
   job_require: MyText
-  company_benefit: MyText
+  job_benefit: MyText
   salary_range: MyText

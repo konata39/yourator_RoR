@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :job_status %>
+    <%= form.check_box :job_status %>
+  </div>
+
+  <div class="field">
     <%= form.label :company_name %>
     <%= form.text_field :company_name %>
   </div>
@@ -32,8 +37,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :company_benefit %>
-    <%= form.text_area :company_benefit %>
+    <%= form.label :job_benefit %>
+    <%= form.text_area :job_benefit %>
   </div>
 
   <div class="field">

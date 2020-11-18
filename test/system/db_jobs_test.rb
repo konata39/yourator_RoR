@@ -14,11 +14,12 @@ class DbJobsTest < ApplicationSystemTestCase
     visit db_jobs_url
     click_on "New Db Job"
 
-    fill_in "Company benefit", with: @db_job.company_benefit
     fill_in "Company name", with: @db_job.company_name
+    fill_in "Job benefit", with: @db_job.job_benefit
     fill_in "Job info", with: @db_job.job_info
     fill_in "Job name", with: @db_job.job_name
     fill_in "Job require", with: @db_job.job_require
+    check "Job status" if @db_job.job_status
     fill_in "Salary range", with: @db_job.salary_range
     click_on "Create Db job"
 
@@ -30,11 +31,12 @@ class DbJobsTest < ApplicationSystemTestCase
     visit db_jobs_url
     click_on "Edit", match: :first
 
-    fill_in "Company benefit", with: @db_job.company_benefit
     fill_in "Company name", with: @db_job.company_name
+    fill_in "Job benefit", with: @db_job.job_benefit
     fill_in "Job info", with: @db_job.job_info
     fill_in "Job name", with: @db_job.job_name
     fill_in "Job require", with: @db_job.job_require
+    check "Job status" if @db_job.job_status
     fill_in "Salary range", with: @db_job.salary_range
     click_on "Update Db job"
 

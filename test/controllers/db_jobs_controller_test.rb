@@ -17,7 +17,7 @@ class DbJobsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create db_job" do
     assert_difference('DbJob.count') do
-      post db_jobs_url, params: { db_job: { company_benefit: @db_job.company_benefit, company_name: @db_job.company_name, job_info: @db_job.job_info, job_name: @db_job.job_name, job_require: @db_job.job_require, salary_range: @db_job.salary_range } }
+      post db_jobs_url, params: { db_job: { company_name: @db_job.company_name, job_benefit: @db_job.job_benefit, job_info: @db_job.job_info, job_name: @db_job.job_name, job_require: @db_job.job_require, job_status: @db_job.job_status, salary_range: @db_job.salary_range } }
     end
 
     assert_redirected_to db_job_url(DbJob.last)
@@ -34,7 +34,7 @@ class DbJobsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update db_job" do
-    patch db_job_url(@db_job), params: { db_job: { company_benefit: @db_job.company_benefit, company_name: @db_job.company_name, job_info: @db_job.job_info, job_name: @db_job.job_name, job_require: @db_job.job_require, salary_range: @db_job.salary_range } }
+    patch db_job_url(@db_job), params: { db_job: { company_name: @db_job.company_name, job_benefit: @db_job.job_benefit, job_info: @db_job.job_info, job_name: @db_job.job_name, job_require: @db_job.job_require, job_status: @db_job.job_status, salary_range: @db_job.salary_range } }
     assert_redirected_to db_job_url(@db_job)
   end
 
