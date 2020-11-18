@@ -1,0 +1,2 @@
+class DbJob < ApplicationRecord
+end

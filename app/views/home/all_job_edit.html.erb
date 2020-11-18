@@ -103,47 +103,29 @@
     <button type="button" onclick="alert('你手賤逆');">連結名稱</button><br><br>
     <font class="left-text">職缺列表</font><button type="button" onclick="alert('你真的手賤逆');">連結</button><br><br>
     <div style="overflow-y:scroll; width: 1000px; height: 850px;">
-      <div v-for="(item, index) in list":id="'GG'":class="'GG'">
-      index: {{ index }}, name: {{ item.name }}
-      <label class="switch">
-        <input type="checkbox" v-bind:checked="item.checked">
-        <span class="slider round"></span>
-      </label>
-      <button type="button" class="delete_button" onclick="alert('你各種手賤逆');">連</button>
-    </div>
+      <% @job_all.each do |job| %>
+          <div id="GG" class="GG">
+            <font style="font-size:20px;"><%= job.job_name %></font><br>
+            <%= job.company_name %>
+            <label class="switch">
+              <% if job.job_status %>
+              <input type="checkbox" checked>
+              <% else %>
+              <input type="checkbox">
+              <% end %>
+              <span class="slider round"></span>
+            </label>
+            <button type="button" class="delete_button" onclick="alert('你各種手賤逆');">連</button>
+          </div>
+      <% end %>
   </div>
   </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
 <script>
-var company = new Vue({
-  el: '#company',
-  data: {
-    list: [
-    ],
-  },
+$('input').bind('click', function() {
+    alert('Unobtrusive!');
 });
-company.list = [{ id: '123456789', name: '選項 1', checked: true },
-      { id: '234567890', name: '選項 2', checked: true },
-      { id: '345678901', name: '選項 3', checked: true },
-      { id: '345678221', name: '選項 4', checked: true },
-      { id: '347778901', name: '選項 5', checked: true },
-      { id: '123456789', name: '選項 1', checked: true},
-      { id: '234567890', name: '選項 2', checked: true },
-      { id: '345678901', name: '選項 3', checked: true },
-      { id: '345678221', name: '選項 4', checked: true },
-      { id: '347778901', name: '選項 5', checked: true },
-      { id: '123456789', name: '選項 1', checked: true },
-      { id: '234567890', name: '選項 2', checked: true },
-      { id: '345678901', name: '選項 3', checked: false },
-      { id: '345678221', name: '選項 4', checked: false },
-      { id: '347778901', name: '選項 5', checked: false },
-      { id: '123456789', name: '選項 1', checked: false },
-      { id: '234567890', name: '選項 2', checked: false },
-      { id: '345678901', name: '選項 3', checked: false },
-      { id: '345678221', name: '選項 4', checked: false },
-      { id: '347778901', name: '選項 5', checked: false }];
-
 </script>
 </body>
 </html>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @db_job.company_name %>
+</p>
+
+<p>
+  <strong>Job name:</strong>
+  <%= @db_job.job_name %>
+</p>
+
+<p>
+  <strong>Job info:</strong>
+  <%= @db_job.job_info %>
+</p>
+
+<p>
+  <strong>Job require:</strong>
+  <%= @db_job.job_require %>
+</p>
+
+<p>
+  <strong>Company benefit:</strong>
+  <%= @db_job.job_benefit %>
+</p>
+
+<p>
+  <strong>Salary range:</strong>
+  <%= @db_job.salary_range %>
+</p>
+
+<%= link_to 'Edit', edit_db_job_path(@db_job) %> |
+<%= link_to 'Back', db_jobs_path %>

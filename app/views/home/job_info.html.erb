@@ -2,7 +2,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <style>
-    .company{
+    .job{
       position:relative;
       width: 1000px;
       height: 900px;
@@ -22,16 +22,20 @@
   </style>
 </head>
 <body>
-  <div class="company" id="company">
+  <% @job_target =  @job_all.find(@job_id) %>
+  <div class="job" id="job">
+    <h1><%= @job_target.job_name %></h1>
     <p>職缺簡介</p>
     <div style="overflow-y:scroll; width: 1000px; height: 850px;">
-      <div v-for="(item, index) in list">
-      <p>工作內容: {{ item.id }}</p>
-      <p>條件要求: {{ item.name }}</p>
-      <p>公司福利: {{ item.media }}</p>
-      <p>薪資範圍: {{ item.salary }}</p>
+      <% @target_company = @company_all.where(:company_name => @job_target.company_name).to_ary %>
+      <p onclick="location.href='company_info?company_id=<%= @target_company[0].id %>';">工司名稱: <%= @job_target.company_name %></p>
+      <p>簡介: <%= @job_target.job_info %></p>
+      <p>條件要求: <%= @job_target.job_require %></p>
+      <p>公司福利: <%= @job_target.job_benefit %></p>
+      <p>薪資範圍: <%= @job_target.salary_range %></p>
     </div>
   </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
 <script>

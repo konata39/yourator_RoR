@@ -22,18 +22,23 @@
   </style>
 </head>
 <body>
+  <% @company_target =  @company_all.find(@company_id) %>
   <div class="company" id="company">
+    <h1><%= @company_target.company_name %></h1>
     <p>公司簡介</p>
     <div style="overflow-y:scroll; width: 1000px; height: 850px;">
-      <div v-for="(item, index) in list">
-      <p>公司簡介: {{ item.id }}</p>
-      <p>公司理念: {{ item.name }}</p>
-      <p>媒體報導: {{ item.media }}</p>
-      <p>薪資福利: {{ item.salary }}</p>
+      <p>公司簡介: <%= @company_target.company_info %></p>
+      <p>公司理念: <%= @company_target.company_target %></p>
+      <p>媒體報導: <%= @company_target.company_media %></p>
+      <p>薪資福利: <%= @company_target.company_salary %></p>
       <p>職缺:</p>
-      <div v-for="each_job in item.job":id="'GG'":class="'GG'">
-        {{ each_job }}
-      </div>
+        <% @company_all_job = @job_all.where(:company_name => @company_target.company_name, :job_status => true).to_ary %>
+        <% @company_all_job.each do |job| %>
+        <div id="GG" class="GG" onclick="location.href='job_info?job_id=<%= job.id %>';">
+          <font style="font-size:20px;"><%= job.job_name %></font><br>
+          <%= job.company_name %>
+        </div>
+      <% end %>
     </div>
   </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

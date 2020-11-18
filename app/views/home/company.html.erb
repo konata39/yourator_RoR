@@ -26,8 +26,11 @@
   <div class="company" id="company">
     <font class="left-text">公司列表</font><br><br>
     <div style="overflow-y:scroll; width: 1000px; height: 850px;">
-      <div v-for="(item, index) in list":id="'GG'":class="'GG'">
-      index: {{ index }}, name: {{ item.name }}
+      <% @company_all.each do |company| %>
+      <div id="GG" class="GG" onclick="location.href='company_info?company_id=<%= company.id %>';">
+        <div class="company_name"><%= company.company_name %></div>
+      </div>
+      <% end %>
     </div>
   </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -40,26 +43,6 @@ var company = new Vue({
     ],
   },
 });
-company.list = [{ id: '123456789', name: '選項 1' },
-      { id: '234567890', name: '選項 2' },
-      { id: '345678901', name: '選項 3' },
-      { id: '345678221', name: '選項 4' },
-      { id: '347778901', name: '選項 5' },
-      { id: '123456789', name: '選項 1' },
-            { id: '234567890', name: '選項 2' },
-            { id: '345678901', name: '選項 3' },
-            { id: '345678221', name: '選項 4' },
-            { id: '347778901', name: '選項 5' },
-            { id: '123456789', name: '選項 1' },
-                  { id: '234567890', name: '選項 2' },
-                  { id: '345678901', name: '選項 3' },
-                  { id: '345678221', name: '選項 4' },
-                  { id: '347778901', name: '選項 5' },
-                  { id: '123456789', name: '選項 1' },
-                        { id: '234567890', name: '選項 2' },
-                        { id: '345678901', name: '選項 3' },
-                        { id: '345678221', name: '選項 4' },
-                        { id: '347778901', name: '選項 5' }];
 
 </script>
 </body>

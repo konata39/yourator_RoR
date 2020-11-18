@@ -29,12 +29,14 @@
       right: 10px;
     }
     .GG{
+      position:relative;
       width:180px;
       height:150px;
       margin: 4px;
       padding: 3px;
       border: 1px #000 solid;
       float:left;
+      text-align: center;
     }
     .GG2{
       width:180px;
@@ -43,6 +45,14 @@
       padding: 3px;
       border: 1px #000 solid;
       float:left;
+      text-align: center;
+    }
+    .company_name{
+      position:absolute;
+      width:80%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   </style>
 </head>
@@ -50,17 +60,27 @@
   <div class="company" id="company">
     <font class="left-text">精選公司</font>
     <a href="company" class="right-text">更多公司...</a><br><br>
-    <div v-for="(item, index) in list":id="'GG'":class="'GG'">
-      index: {{ index }}, name: {{ item.name }}
+    <% @company_index.each do |company| %>
+    <div id="GG" class="GG" onclick="location.href='company_info?company_id=<%= company.id %>';">
+      <div class="company_name"><%= company.company_name %></div>
     </div>
+    <% end %>
   </div>
   <div class="vacuum" id="vacuum">
     <font class="left-text">精選職缺</font>
     <a href="job" class="right-text">更多職缺...</a><br><br>
-    <div v-for="(item, index) in list":id="'GG'":class="'GG'">
-      index: {{ index }}, name: {{ item.name }}
+    <% @job_index.each do |job| %>
+    <% if job.job_status %>
+    <div id="GG" class="GG" onclick="location.href='job_info?job_id=<%= job.id %>';">
+      <div class="company_name" >
+        <font style="font-size:20px;"><%= job.job_name %></font><br>
+        <%= job.company_name %>
+      </div>
     </div>
+    <% end %>
+    <% end %>
   </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
 <script>
@@ -71,12 +91,6 @@ var company = new Vue({
     ],
   },
 });
-company.list = [{ id: '123456789', name: '選項 1' },
-      { id: '234567890', name: '選項 2' },
-      { id: '345678901', name: '選項 3' },
-      { id: '345678221', name: '選項 4' },
-      { id: '347778901', name: '選項 5' }];
-
 var job = new Vue({
   el: '#vacuum',
   data: {
@@ -84,16 +98,6 @@ var job = new Vue({
     ],
   },
 });
-job.list = [{ id: '123456789', name: '選項 1' },
-      { id: '234567890', name: '選項 2' },
-      { id: '345678901', name: '選項 3' },
-      { id: '345678221', name: '選項 4' },
-      { id: '347778901', name: '選項 5' },
-      { id: '123456789', name: '選項 1' },
-            { id: '234567890', name: '選項 2' },
-            { id: '345678901', name: '選項 3' },
-            { id: '345678221', name: '選項 4' },
-            { id: '347778901', name: '選項 5' }];
 </script>
 </body>
 </html>
