@@ -84,26 +84,47 @@
       <span class="slider"></span>
     </label>
     <form action="/formprocess.php" method="post">
+      <input type="hidden" id="company_name" name="company_name" value=<%= @company_name %>>
+      <p align="left">公作名稱</p>
+      <textarea name="job_name" required></textarea>
       <p align="left">公作內容</p>
-      <textarea name="company_name" required>
-      </textarea>
+      <textarea name="job_info" required></textarea>
       <p align="left">條件要求</p>
-      <textarea name="company_spirit" required>
-      </textarea>
+      <textarea name="job_require" required></textarea>
       <p align="left">公司福利</p>
-      <textarea name="media" required>
-      </textarea>
+      <textarea name="job_benefit" required></textarea>
       <p align="left">薪資範圍</p>
-      <textarea name="salary" required>
-      </textarea>
+      <textarea name="salary_range" required></textarea>
       <br>
-      <input type="submit" value="儲存">
+      <input id="submit" type="submit" value="儲存">
     </form>
   </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
 <script>
-
+  $('#submit').click(function(e){
+    e.preventDefault();
+    var form = $('form')[0];
+    var formData = new FormData(form);
+    $.ajax({
+        url:'execute_job',
+        type : "POST",
+        data : formData,
+        headers: {
+          'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+        },
+        contentType: false,
+        cache: false,
+        processData: false,
+        success : function(data)
+        {
+            location.href = "all_job_edit?company_id=<%= @company_id %>"
+        },error: function(data)
+        {
+            console.log('無法送出');
+        }
+    })
+});
 </script>
 </body>
 </html>

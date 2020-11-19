@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   get "job_edit" => 'home#job_edit'
   get "company_edit" => 'home#company_edit'
   get "all_job_edit" => 'home#all_job_edit'
+  get "execute_state" => "home#state_execution"
+  get "execute_delete" => "home#delete_execution"
+  post "execute_job" => "home#job_execution"
 end

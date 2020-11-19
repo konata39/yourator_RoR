@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @company_index = DbCompany.limit(5).all
-    @job_index = DbJob.limit(10).all
+    @job_index = DbJob.limit(10).where(:job_status => true)
   end
   def job
     @job_all = DbJob.all
@@ -20,7 +20,8 @@ class HomeController < ApplicationController
     @job_all = DbJob.all
   end
   def job_edit
-    @job_id = params[:job_id]
+    @company_id = params[:company_id]
+    @company_name = DbCompany.find(@company_id).company_name
   end
   def company_edit
     @company_id = params[:company_id]
@@ -29,8 +30,17 @@ class HomeController < ApplicationController
     @company_id = params[:company_id]
     @company_name = DbCompany.find(@company_id).company_name
     @job_all = DbJob.where(:company_name => @company_name).to_ary
-    def update_status(a = 2, b)
-        a + b
-    end
+  end
+  def state_execution
+    execution = DbJob.find(params[:id])
+    execution.job_status = !execution.job_status
+    execution.save
+  end
+  def delete_execution
+    execution = DbJob.find(params[:id])
+    execution.destroy
+  end
+  def job_execution
+    DbJob.create job_status: true, company_name: params[:company_name], job_name: params[:job_name], job_info: params[:job_info], job_require: params[:job_require], job_benefit: params[:job_benefit], salary_range: params[:salary_range]
   end
 end

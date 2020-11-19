@@ -100,8 +100,8 @@
 </head>
 <body>
   <div class="company" id="company">
-    <button type="button" onclick="alert('你手賤逆');">連結名稱</button><br><br>
-    <font class="left-text">職缺列表</font><button type="button" onclick="alert('你真的手賤逆');">連結</button><br><br>
+    <button type="button" onclick="location.href='company_edit?company_id=<%= @company_id %>';">管理工司內容</button><br><br>
+    <font class="left-text">職缺列表</font><button type="button" onclick="location.href='job_edit?company_id=<%= @company_id %>';">新增職缺</button><br><br>
     <div style="overflow-y:scroll; width: 1000px; height: 850px;">
       <% @job_all.each do |job| %>
           <div id="GG" class="GG">
@@ -109,23 +109,45 @@
             <%= job.company_name %>
             <label class="switch">
               <% if job.job_status %>
-              <input type="checkbox" checked>
+              <input type="checkbox" id="job_checkbox" checked job_id=<%= job.id %>>
               <% else %>
-              <input type="checkbox">
+              <input type="checkbox" id="job_checkbox" job_id=<%= job.id %>>
               <% end %>
               <span class="slider round"></span>
             </label>
-            <button type="button" class="delete_button" onclick="alert('你各種手賤逆');">連</button>
+            <button type="button" class="delete_button" id="delete_button" job_id=<%= job.id %>>D</button>
           </div>
       <% end %>
   </div>
   </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
-<script>
-$('input').bind('click', function() {
-    alert('Unobtrusive!');
-});
+<script type="text/javascript">
+  $('#job_checkbox').on('click', function(e){
+    var execute_id = this.getAttribute("job_id");
+    // ajax request
+    $.ajax({
+      url: "/execute_state",
+      type: "GET",
+      data : {
+        id: execute_id
+      },
+      dataType: "script",
+    });
+  });
+  $('#delete_button').on('click', function(e){
+    var execute_id = this.getAttribute("job_id");
+    // ajax request
+    $.ajax({
+      url: "/execute_delete",
+      type: "GET",
+      data : {
+        id: execute_id
+      },
+      dataType: "script",
+    });
+    this.parentNode.remove();
+  });
 </script>
 </body>
 </html>
