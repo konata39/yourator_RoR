@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get "execute_state" => "home#state_execution"
   get "execute_delete" => "home#delete_execution"
   post "execute_job" => "home#job_execution"
+  post "execute_company" => "home#company_execution"
 end

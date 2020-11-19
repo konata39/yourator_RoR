@@ -25,6 +25,7 @@ class HomeController < ApplicationController
   end
   def company_edit
     @company_id = params[:company_id]
+    @company_data = DbCompany.find(@company_id)
   end
   def all_job_edit
     @company_id = params[:company_id]
@@ -42,5 +43,13 @@ class HomeController < ApplicationController
   end
   def job_execution
     DbJob.create job_status: true, company_name: params[:company_name], job_name: params[:job_name], job_info: params[:job_info], job_require: params[:job_require], job_benefit: params[:job_benefit], salary_range: params[:salary_range]
+  end
+  def company_execution
+    execution = DbCompany.find(params[:company_id])
+    execution.company_info = params[:company_info]
+    execution.company_target = params[:company_target]
+    execution.company_media = params[:company_media]
+    execution.company_salary = params[:company_salary]
+    execution.save
   end
 end
