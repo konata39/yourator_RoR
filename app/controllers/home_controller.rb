@@ -42,7 +42,7 @@ class HomeController < ApplicationController
     execution.destroy
   end
   def job_execution
-    DbJob.create job_status: true, company_name: params[:company_name], job_name: params[:job_name], job_info: params[:job_info], job_require: params[:job_require], job_benefit: params[:job_benefit], salary_range: params[:salary_range]
+    DbJob.create job_status: params[:job_status], company_name: params[:company_name], job_name: params[:job_name], job_info: params[:job_info], job_require: params[:job_require], job_benefit: params[:job_benefit], salary_range: params[:salary_range]
   end
   def company_execution
     execution = DbCompany.find(params[:company_id])

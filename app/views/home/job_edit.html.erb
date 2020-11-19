@@ -80,11 +80,12 @@
 <body>
   <div class="company" id="company">
     <label class="switch">
-      <input type="checkbox">
+      <input id="status_slider" type="checkbox">
       <span class="slider"></span>
     </label>
     <form action="/formprocess.php" method="post">
       <input type="hidden" id="company_name" name="company_name" value=<%= @company_name %>>
+      <input type="hidden" id="job_status" name="job_status" value=0>
       <p align="left">公作名稱</p>
       <textarea name="job_name" required></textarea>
       <p align="left">公作內容</p>
@@ -102,6 +103,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
 <script>
+  $('#status_slider').click(function(e){
+    var now_status = document.getElementById("job_status").getAttribute("value");
+    document.getElementById("job_status").setAttribute("value", 1 - now_status);
+    //console.log(document.getElementById("job_status").getAttribute("value"));
+  });
   $('#submit').click(function(e){
     e.preventDefault();
     var form = $('form')[0];
